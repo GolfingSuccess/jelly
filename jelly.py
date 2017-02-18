@@ -2268,7 +2268,11 @@ atoms = {
 	),
 	'ƒB': attrdict(
 		arity = 1,
-		call = is_palindrome
+		call = lambda z: int(is_palindrome(z))
+	),
+	'ƒR': attrdict(
+		arity = 2,
+		call = lambda x, y: list(filter(sympy.primetest.isprime, range(x, y + 1)))
 	)
 }
 
