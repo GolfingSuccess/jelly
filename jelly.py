@@ -2,7 +2,7 @@ import cmath, copy, dictionary, fractions, functools, itertools, locale, math, n
 
 code_page  = '''¡¢£¤¥¦©¬®µ½¿€ÆÇÐÑ×ØŒÞßæçðıȷñ÷øœþ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¶'''
 code_page += '''°¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ƁƇƊƑƓƘⱮƝƤƬƲȤɓƈɗƒɠɦƙɱɲƥʠɼʂƭʋȥẠḄḌẸḤỊḲḶṂṆỌṚṢṬỤṾẈỴẒȦḂĊḊĖḞĠḢİĿṀṄȮṖṘṠṪẆẊẎŻạḅḍẹḥịḳḷṃṇọṛṣṭụṿẉỵẓȧḃċḋėḟġḣŀṁṅȯṗṙṡṫẇẋẏż«»‘’“”'''
-# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƤƬƲȤɓɗƒɦƙɱɲƥʠɼʂƭʋȥẸẈẒĿṘẎŻẹḥḳṇọụṿẉỵẓḋėġŀṅẏ
+# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƤƬƲȤɓɗɦƙɱɲƥʠɼʂƭʋȥẸẈẒĿṘẎŻẹḥḳṇọụṿẉỵẓḋėġŀṅẏ
 
 str_digit = '0123456789'
 str_lower = 'abcdefghijklmnopqrstuvwxyz'
@@ -315,6 +315,11 @@ def is_string(iterable):
 	if type(iterable) != list:
 		return False
 	return all(map(lambda t: type(t) == str, iterable))
+
+def is_palindrome(iterable):
+	if type(iterable) != list:
+		return True
+	return iterable == iterable[::-1]
 
 def jelly_eval(code, arguments):
 	return variadic_chain(parse_code(code)[-1] if code else '', arguments)
@@ -2260,6 +2265,10 @@ atoms = {
 	'Øy': attrdict(
 		arity = 0,
 		call = lambda: list('AEIOUYaeiouy')
+	),
+	'ƒB': attrdict(
+		arity = 1,
+		call = is_palindrome
 	)
 }
 
