@@ -28,8 +28,6 @@ To execute a Jelly program, you have three options:
 
 	This requires setting the environment variable *LANG* (or your OS's equivalent) to *en_US.UTF8* or compatible.
 
-Alternatively, you can use the [Jelly interpreter] on [Try it online!]
-
 Jelly's main input method is via command line arguments, although reading input from STDIN is also possible.
 
 ### Documentation
