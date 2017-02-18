@@ -36,11 +36,11 @@ Jelly's main input method is via command line arguments, although reading input 
 * [Atoms]
 * [Quicks]
 
-[Atoms]: https://github.com/DennisMitchell/jelly/wiki/Atoms
-[Jelly code page]: https://github.com/DennisMitchell/jelly/wiki/Code-page
+[Atoms]: https://github.com/GolfingSuccess/jelly/wiki/Atoms
+[Jelly code page]: https://github.com/GolfingSuccess/jelly/wiki/Code-page
 [Jelly interpreter]: http://jelly.tryitonline.net
 [NumPy]: http://www.numpy.org/
-[Quicks]: https://github.com/DennisMitchell/jelly/wiki/Quicks
+[Quicks]: https://github.com/GolfingSuccess/jelly/wiki/Quicks
 [SymPy]: http://www.sympy.org/
 [Try it online!]: http://tryitonline.net
-[Tutorial]: https://github.com/DennisMitchell/jelly/wiki/Tutorial
+[Tutorial]: https://github.com/GolfingSuccess/jelly/wiki/Tutorial
