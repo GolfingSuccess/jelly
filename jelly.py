@@ -316,10 +316,9 @@ def is_string(iterable):
 		return False
 	return all(map(lambda t: type(t) == str, iterable))
 
-def is_palindrome(iterable):
-	if type(iterable) != list:
-		return True
-	return iterable == iterable[::-1]
+def is_palindrome(argument):
+	argument = iterable(argument, make_digits = True)
+	return int(argument == argument[::-1])
 
 def jelly_eval(code, arguments):
 	return variadic_chain(parse_code(code)[-1] if code else '', arguments)
@@ -1954,6 +1953,10 @@ atoms = {
 		arity = 1,
 		call = lambda z: bounce(iterable(z, make_range = True))
 	),
+	'ŒḂ': attrdict(
+		arity = 1,
+		call = is_palindrome
+	),
 	'Œc': attrdict(
 		arity = 1,
 		rdepth = 0,
@@ -2081,6 +2084,12 @@ atoms = {
 		ldepth = 0,
 		rdepth = 0,
 		call = math.atan2
+	),
+	'æR': attrdict(
+		arity = 2,
+		ldepth = 0,
+		rdepth = 0,
+		call = lambda x, y: list(sympy.primerange(x, y + 1))
 	),
 	'æċ': attrdict(
 		arity = 2,
@@ -2268,11 +2277,13 @@ atoms = {
 	),
 	'ƒB': attrdict(
 		arity = 1,
-		call = lambda z: int(is_palindrome(z))
+		call = lambda z: is_palindrome
 	),
 	'ƒR': attrdict(
 		arity = 2,
-		call = lambda x, y: list(filter(sympy.primetest.isprime, range(x, y + 1)))
+		ldepth = 0,
+		rdepth = 0,
+		call = lambda x, y: list(sympy.primerange(x, y + 1))
 	)
 }
 
