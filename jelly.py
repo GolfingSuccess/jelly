@@ -2284,6 +2284,18 @@ atoms = {
 		ldepth = 0,
 		rdepth = 0,
 		call = lambda x, y: list(sympy.primerange(x, y + 1))
+	),
+	'ƒu': attrdict(
+		arity = 1,
+		ldepth = 0,
+		rdepth = 0,
+		call = lambda z:z in list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+	),
+	'ƒl': attrdict(
+		arity = 1,
+		ldepth = 0,
+		rdepth = 0,
+		call = lambda z:z in list('abcdefghijklmnopqrstuvwxyz')
 	)
 }
 
