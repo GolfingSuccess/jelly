@@ -2289,13 +2289,13 @@ atoms = {
 		arity = 1,
 		ldepth = 0,
 		rdepth = 0,
-		call = lambda z:z in list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+		call = lambda z:int(z in list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
 	),
 	'ƒl': attrdict(
 		arity = 1,
 		ldepth = 0,
 		rdepth = 0,
-		call = lambda z:z in list('abcdefghijklmnopqrstuvwxyz')
+		call = lambda z:int(z in list('abcdefghijklmnopqrstuvwxyz'))
 	)
 }
 
