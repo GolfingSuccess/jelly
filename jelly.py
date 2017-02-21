@@ -2277,7 +2277,7 @@ atoms = {
 	),
 	'ƒB': attrdict(
 		arity = 1,
-		call = lambda z: is_palindrome
+		call = is_palindrome
 	),
 	'ƒR': attrdict(
 		arity = 2,
