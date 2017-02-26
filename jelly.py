@@ -2296,6 +2296,10 @@ atoms = {
 		ldepth = 0,
 		rdepth = 0,
 		call = lambda z:int(z in list('abcdefghijklmnopqrstuvwxyz'))
+	),
+	'ƒC': attrdict(
+		arity = 0,
+		call = lambda: list(code_page.replace('¶', '\n'))
 	)
 }
 
