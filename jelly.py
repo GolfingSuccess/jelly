@@ -2001,6 +2001,11 @@ atoms = {
 		arity = 1,
 		call = depth
 	),
+	'ŒG': attrdict(
+		arity = 1,
+		ldepth = 1,
+		call = get_request
+	),
 	'Œg': attrdict(
 		arity = 1,
 		ldepth = 1,
