@@ -2,7 +2,7 @@ import cmath, copy, dictionary, fractions, functools, itertools, locale, math, n
 
 code_page  = '''¡¢£¤¥¦©¬®µ½¿€ÆÇÐÑ×ØŒÞßæçðıȷñ÷øœþ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¶'''
 code_page += '''°¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ƁƇƊƑƓƘⱮƝƤƬƲȤɓƈɗƒɠɦƙɱɲƥʠɼʂƭʋȥẠḄḌẸḤỊḲḶṂṆỌṚṢṬỤṾẈỴẒȦḂĊḊĖḞĠḢİĿṀṄȮṖṘṠṪẆẊẎŻạḅḍẹḥịḳḷṃṇọṛṣṭụṿẉỵẓȧḃċḋėḟġḣŀṁṅȯṗṙṡṫẇẋẏż«»‘’“”'''
-# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƤƬƲȤɓɗɦƙɱɲƥʠɼʂƭʋȥẸẈẒĿṘẎŻẹḥḳṇọụṿẉỵẓḋėġŀṅẏ
+# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƤƬƲȤɗɦƙɱɲƥʠɼʂƭʋȥẸẈẒĿṘẎŻẹḥḳṇọụṿẉỵẓḋėġŀṅẏ
 
 str_digit = '0123456789'
 str_lower = 'abcdefghijklmnopqrstuvwxyz'
