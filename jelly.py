@@ -2244,6 +2244,10 @@ atoms = {
 		arity = 0,
 		call = lambda: list(str_digit + 'ABCDEF')
 	),
+	'ØJ': attrdict(
+		arity = 0,
+		call = lambda: list(code_page)
+	),
 	'ØP': attrdict(
 		arity = 0,
 		call = lambda: math.pi
