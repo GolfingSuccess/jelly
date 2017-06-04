@@ -2252,6 +2252,10 @@ atoms = {
 		arity = 0,
 		call = lambda: math.pi
 	),
+	'ØṖ': attrdict(
+		arity = 0,
+		call = lambda: list(map(chr, range(32, 127)))
+	),
 	'ØQ': attrdict(
 		arity = 0,
 		call = lambda: [list('QWERTYUIOP'), list('ASDFGHJKL'), list('ZXCVBNM')]
