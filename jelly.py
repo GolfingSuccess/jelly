@@ -50,7 +50,7 @@ def create_chain(chain, arity = -1, isForward = True):
 	return attrdict(
 		arity = arity,
 		chain = chain,
-		call = lambda x = None, y = None: variadic_chain(chain, isForward and (x, y) or (y, x))
+		call = lambda x = None, y = None: variadic_chain(chain, isForward and (x, y) or (y, x)))
 
 def create_literal(string):
 	return attrdict(
