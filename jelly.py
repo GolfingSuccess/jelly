@@ -83,11 +83,6 @@ def conv_monadic_integer(link, arg):
 	except:
 		return 0
 
-def decrement_depth(link):
-	tolist = lambda x: x if type(x) == list else [x]
-	listified = list(map(tolist, tolist(link)))
-	return functools.reduce(list.__add__, listified)
-
 def determinant(matrix):
 	matrix = sympy.Matrix(matrix)
 	if matrix.is_square:
@@ -1592,7 +1587,7 @@ atoms = {
 	),
 	'Ẏ': attrdict(
 		arity = 1,
-		call = decrement_depth
+		call = lambda z: sum(map(iterable, iterable(z)), [])
 	),
 	'y': attrdict(
 		arity = 2,
@@ -2131,7 +2126,7 @@ atoms = {
 		arity = 2,
 		ldepth = 0,
 		rdepth = 0,
-		call = lambda x, y: primerange
+		call = primerange
 	),
 	'æċ': attrdict(
 		arity = 2,
