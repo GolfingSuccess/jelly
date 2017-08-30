@@ -1292,6 +1292,10 @@ atoms = {
 		arity = 1,
 		call = equal
 	),
+	'Ẹ': attrdict(
+		arity = 1,
+		call = lambda z: int(any(iterable(z)))
+	),
 	'Ė': attrdict(
 		arity = 1,
 		call = lambda z: [[t + 1, u] for t, u in enumerate(iterable(z))]
