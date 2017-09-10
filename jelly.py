@@ -2,7 +2,8 @@ import cmath, collections, copy, dictionary, fractions, functools, itertools, lo
 
 code_page  = '''¡¢£¤¥¦©¬®µ½¿€ÆÇÐÑ×ØŒÞßæçðıȷñ÷øœþ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¶'''
 code_page += '''°¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ƁƇƊƑƓƘⱮƝƤƬƲȤɓƈɗƒɠɦƙɱɲƥʠɼʂƭʋȥẠḄḌẸḤỊḲḶṂṆỌṚṢṬỤṾẈỴẒȦḂĊḊĖḞĠḢİĿṀṄȮṖṘṠṪẆẊẎŻạḅḍẹḥịḳḷṃṇọṛṣṭụṿẉỵẓȧḃċḋėḟġḣŀṁṅȯṗṙṡṫẇẋẏż«»‘’“”'''
-# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƬƲȤɗƒɦƙɱɲƥʠɼʂƭʋȥẈẒŻẹḥḳṇụṿẉỵẓḋėġṅẏ
+
+# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƬƲȤɗƒɦɱɲƥʠɼʂƭʋȥẈẒŻẹḥḳṇụṿẉỵẓḋėġṅẏ
 
 str_digit = '0123456789'
 str_lower = 'abcdefghijklmnopqrstuvwxyz'
@@ -758,13 +759,13 @@ def powerset(array):
 def prefix(links, outmost_links, index):
 	ret = [attrdict(arity = 1)]
 	if len(links) == 1:
-		ret[0].call = lambda z: [links[0].call(t) for t in split_prefix(z)]
+		ret[0].call = lambda z: [monadic_link(links[0], t) for t in split_prefix(z)]
 	else:
 		width = links[1].call()
 		if width < 0:
-			ret[0].call = lambda z: [links[0].call(t) for t in split_rolling_out(z, abs(width))]
+			ret[0].call = lambda z: [monadic_link(links[0], t) for t in split_rolling_out(z, abs(width))]
 		else:
-			ret[0].call = lambda z: [links[0].call(t) for t in split_rolling(z, width)]
+			ret[0].call = lambda z: [monadic_link(links[0], t) for t in split_rolling(z, width)]
 	return ret
 
 def primerange(start, end):
@@ -883,6 +884,22 @@ def split_fixed_out(array, width):
 	array = iterable(array)
 	return [array[:index] + array[index + width:] for index in range(0, len(array), width)]
 
+def split_key(control, data):
+	groups = {}
+	order = []
+	count = 0
+	for key, item in zip(control, data):
+		key = repr(key) if type(key) == list else key
+		if key not in groups:
+			order.append(key)
+			groups[key] = []
+		groups[key].append(item)
+		count += 1
+	result = [groups[key] for key in order]
+	if count < len(data):
+		result.append(data[count:])
+	return result
+
 def split_once(array, needle):
 	array = iterable(array, make_digits = True)
 	index = index_of(array, needle) or len(array)
@@ -943,13 +960,13 @@ def stringify(iterable, recurse = True):
 def suffix(links, outmost_links, index):
 	ret = [attrdict(arity = 1)]
 	if len(links) == 1:
-		ret[0].call = lambda z: [links[0].call(t) for t in split_suffix(z)]
+		ret[0].call = lambda z: [monadic_link(links[0], t) for t in split_suffix(z)]
 	else:
 		width = links[1].call()
 		if width < 0:
-			ret[0].call = lambda z: [links[0].call(t) for t in split_fixed_out(z, abs(width))]
+			ret[0].call = lambda z: [monadic_link(links[0], t) for t in split_fixed_out(z, abs(width))]
 		else:
-			ret[0].call = lambda z: [links[0].call(t) for t in split_fixed(z, width)]
+			ret[0].call = lambda z: [monadic_link(links[0], t) for t in split_fixed(z, width)]
 	return ret
 
 def symmetric_mod(number, half_divisor):
@@ -2493,6 +2510,13 @@ quicks = {
 	'ÐƤ': attrdict(
 		condition = lambda links: links and links[0].arity,
 		quicklink = suffix
+	),
+	'ƙ': attrdict(
+		condition = lambda links: links and links[0].arity,
+		quicklink = lambda links, outmost_links, index: [attrdict(
+			arity = 2,
+			call = lambda x, y: [monadic_link(links[0], g) for g in split_key(iterable(x, make_digits = True), iterable(y, make_digits = True))]
+		)]
 	),
 	'¤': attrdict(
 		condition = lambda links: len(links) > 1 and links[0].arity == 0,
