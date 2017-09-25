@@ -3,7 +3,7 @@ import cmath, collections, copy, dictionary, fractions, functools, itertools, lo
 code_page  = '''¡¢£¤¥¦©¬®µ½¿€ÆÇÐÑ×ØŒÞßæçðıȷñ÷øœþ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¶'''
 code_page += '''°¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ƁƇƊƑƓƘⱮƝƤƬƲȤɓƈɗƒɠɦƙɱɲƥʠɼʂƭʋȥẠḄḌẸḤỊḲḶṂṆỌṚṢṬỤṾẈỴẒȦḂĊḊĖḞĠḢİĿṀṄȮṖṘṠṪẆẊẎŻạḅḍẹḥịḳḷṃṇọṛṣṭụṿẉỵẓȧḃċḋėḟġḣŀṁṅȯṗṙṡṫẇẋẏż«»‘’“”'''
 
-# Unused letters for single atoms: kquƁƇƊƑƘⱮƝƬƲȤɗƒɦɱɲƥʠɼʂʋȥẈẒŻẹḥḳṇụṿẉỵẓḋėġṅẏ
+# Unused letters for single atoms: kquƁƇƘⱮƝƬȤɗƒɦɱƥʠɼʂʋȥẈẒŻẹḥḳṇụṿẉỵẓḋėġṅẏ
 
 str_digit = '0123456789'
 str_lower = 'abcdefghijklmnopqrstuvwxyz'
@@ -1312,6 +1312,11 @@ atoms = {
 		arity = 1,
 		call = lambda z: iterable(z, make_range = True)[1:]
 	),
+	'Ɗ': attrdict(
+		arity = 1,
+		ldepth = 0,
+		call = lambda z: z - 2
+	)
 	'd': attrdict(
 		arity = 2,
 		ldepth = 0,
@@ -1643,6 +1648,11 @@ atoms = {
 		arity = 1,
 		call = lambda z: sorted(range(1, len(iterable(z)) + 1), key = lambda t: iterable(z)[t - 1])
 	),
+	'Ʋ': attrdict(
+		arity = 1,
+		ldepth = 0,
+		call = lambda z: z + 2
+	)
 	'V': attrdict(
 		arity = 1,
 		ldepth = 1,
@@ -2092,6 +2102,11 @@ atoms = {
 		ldepth = 1,
 		call = from_primorial_base
 	),
+	'Æ«': attrdict(
+		arity = 1,
+		ldepth = 0,
+		call = lambda z: 2 ** z
+	)
 	'Œ!': attrdict(
 		arity = 1,
 		call = lambda z: listify(itertools.permutations(iterable(z, make_range = True)))
@@ -2440,6 +2455,10 @@ atoms = {
 		arity = 0,
 		call = lambda: list('AEIOUaeiou')
 	),
+	'Øƈ': attrdict(
+		arity = 0,
+		call = lambda: sys.stdin.read
+	)
 	'Øe': attrdict(
 		arity = 0,
 		call = lambda: math.e
@@ -2490,6 +2509,10 @@ quicks = {
 		condition = lambda links: True,
 		quicklink = lambda links, outmost_links, index: [create_chain(outmost_links[index - 1], 2)]
 	),
+	'ɲ': attrdict(
+		condition = lambda links: True,
+		quicklink = lambda links, outmost_links, index: [create_chain(outmost_links[(index + 1) % len(outmost_links)], 0)]
+	)
 	'Ñ': attrdict(
 		condition = lambda links: True,
 		quicklink = lambda links, outmost_links, index: [create_chain(outmost_links[(index + 1) % len(outmost_links)], 1)]
@@ -2688,6 +2711,10 @@ hypers = {
 		arity = link.arity,
 		call = lambda x, y = None: sorted(x, key=lambda t: variadic_link(link, (t, y)))
 	),
+	'ÐÞ': lambda link, none = None: attrdict(
+		arity = link.arity,
+		call = lambda x, y = None: sorted(x, key=lambda t:variadic_link(link, (t, y)), reverse=True)
+	)
 	'þ': lambda link, none = None: attrdict(
 		arity = 2,
 		call = lambda x, y: [[dyadic_link(link, (u, v)) for u in iterable(x, make_range = True)] for v in iterable(y, make_range = True)]
