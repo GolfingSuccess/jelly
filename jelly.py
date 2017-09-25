@@ -2461,7 +2461,7 @@ atoms = {
 	),
 	'Øƈ': attrdict(
 		arity = 0,
-		call = lambda: sys.stdin.read
+		call = sys.stdin.read
 	),
 	'Øe': attrdict(
 		arity = 0,
