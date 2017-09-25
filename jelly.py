@@ -1723,7 +1723,7 @@ atoms = {
 	),
 	'Ż': attrdict(
 		arity = 1,
-		call = lambda x: [i[:min(map(len, x))] for i in x]
+		call = lambda x: [i[:min(map(len, iterable(x)))] for i in x]
 	),
 	'z': attrdict(
 		arity = 2,
