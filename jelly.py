@@ -1721,6 +1721,10 @@ atoms = {
 		arity = 1,
 		call = zip_ragged
 	),
+	'Ż': attrdict(
+		arity = 1,
+		call = lambda x: [list(i) for i in zip(*zip(*x))]
+	),
 	'z': attrdict(
 		arity = 2,
 		call = lambda x, y: listify(itertools.zip_longest(*map(iterable, x), fillvalue = y))
