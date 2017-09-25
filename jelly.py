@@ -1316,7 +1316,7 @@ atoms = {
 		arity = 1,
 		ldepth = 0,
 		call = lambda z: z - 2
-	)
+	),
 	'd': attrdict(
 		arity = 2,
 		ldepth = 0,
@@ -1652,7 +1652,7 @@ atoms = {
 		arity = 1,
 		ldepth = 0,
 		call = lambda z: z + 2
-	)
+	),
 	'V': attrdict(
 		arity = 1,
 		ldepth = 1,
@@ -2106,7 +2106,7 @@ atoms = {
 		arity = 1,
 		ldepth = 0,
 		call = lambda z: 2 ** z
-	)
+	),
 	'Œ!': attrdict(
 		arity = 1,
 		call = lambda z: listify(itertools.permutations(iterable(z, make_range = True)))
@@ -2211,6 +2211,10 @@ atoms = {
 		arity = 1,
 		ldepth = 2,
 		call = rld
+	),
+	'ŒṢ': attrdict(
+		arity = 1,
+		call = lambda z: sorted(iterable(z, make_digits = True), reverse = True)
 	),
 	'Œs': attrdict(
 		arity = 1,
@@ -2458,7 +2462,7 @@ atoms = {
 	'Øƈ': attrdict(
 		arity = 0,
 		call = lambda: sys.stdin.read
-	)
+	),
 	'Øe': attrdict(
 		arity = 0,
 		call = lambda: math.e
@@ -2512,7 +2516,7 @@ quicks = {
 	'ɲ': attrdict(
 		condition = lambda links: True,
 		quicklink = lambda links, outmost_links, index: [create_chain(outmost_links[(index + 1) % len(outmost_links)], 0)]
-	)
+	),
 	'Ñ': attrdict(
 		condition = lambda links: True,
 		quicklink = lambda links, outmost_links, index: [create_chain(outmost_links[(index + 1) % len(outmost_links)], 1)]
@@ -2714,7 +2718,7 @@ hypers = {
 	'ÐÞ': lambda link, none = None: attrdict(
 		arity = link.arity,
 		call = lambda x, y = None: sorted(x, key=lambda t:variadic_link(link, (t, y)), reverse=True)
-	)
+	),
 	'þ': lambda link, none = None: attrdict(
 		arity = 2,
 		call = lambda x, y: [[dyadic_link(link, (u, v)) for u in iterable(x, make_range = True)] for v in iterable(y, make_range = True)]
