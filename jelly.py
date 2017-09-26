@@ -3,7 +3,7 @@ import cmath, collections, copy, dictionary, fractions, functools, itertools, lo
 code_page  = '''¡¢£¤¥¦©¬®µ½¿€ÆÇÐÑ×ØŒÞßæçðıȷñ÷øœþ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¶'''
 code_page += '''°¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ƁƇƊƑƓƘⱮƝƤƬƲȤɓƈɗƒɠɦƙɱɲƥʠɼʂƭʋȥẠḄḌẸḤỊḲḶṂṆỌṚṢṬỤṾẈỴẒȦḂĊḊĖḞĠḢİĿṀṄȮṖṘṠṪẆẊẎŻạḅḍẹḥịḳḷṃṇọṛṣṭụṿẉỵẓȧḃċḋėḟġḣŀṁṅȯṗṙṡṫẇẋẏż«»‘’“”'''
 
-# Unused letters for single atoms: kquƁƇƘⱮƝƬȤɗƒɦɱƥʠɼʂʋȥẈẒŻẹḥḳṇụṿẉỵẓḋėġṅẏ
+# Unused letters for single atoms: kquƁƇƊƘⱮƝƬƲȤɗƒɦɱƥʠɼʂʋȥẹḥḳṇụṿẉỵẓḋėġṅẏ
 
 str_digit = '0123456789'
 str_lower = 'abcdefghijklmnopqrstuvwxyz'
@@ -1312,11 +1312,6 @@ atoms = {
 		arity = 1,
 		call = lambda z: iterable(z, make_range = True)[1:]
 	),
-	'Ɗ': attrdict(
-		arity = 1,
-		ldepth = 0,
-		call = lambda z: z - 2
-	),
 	'd': attrdict(
 		arity = 2,
 		ldepth = 0,
@@ -1648,11 +1643,6 @@ atoms = {
 		arity = 1,
 		call = lambda z: sorted(range(1, len(iterable(z)) + 1), key = lambda t: iterable(z)[t - 1])
 	),
-	'Ʋ': attrdict(
-		arity = 1,
-		ldepth = 0,
-		call = lambda z: z + 2
-	),
 	'V': attrdict(
 		arity = 1,
 		ldepth = 1,
@@ -1670,6 +1660,11 @@ atoms = {
 	'W': attrdict(
 		arity = 1,
 		call = lambda z: [z]
+	),
+	'Ẉ': attrdict(
+		arity = 1,
+		ldepth = 0,
+		call = lambda z: z - 2
 	),
 	'Ẇ': attrdict(
 		arity = 1,
@@ -1720,6 +1715,11 @@ atoms = {
 	'Z': attrdict(
 		arity = 1,
 		call = zip_ragged
+	),
+	'Ẓ': attrdict(
+		arity = 1,
+		ldepth = 0,
+		call = lambda z: z + 2
 	),
 	'Ż': attrdict(
 		arity = 1,
