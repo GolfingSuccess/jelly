@@ -2160,11 +2160,6 @@ atoms = {
 		ldepth = 1,
 		call = group_equal
 	),
-	'œị': attrdict(
-		arity = 2,
-		ldepth = 1,
-		call = at_index_ndim
-	),
 	'Œl': attrdict(
 		arity = 1,
 		ldepth = 1,
@@ -2342,6 +2337,11 @@ atoms = {
 		arity = 2,
 		rdepth = 0,
 		call = lambda x, y: listify(itertools.combinations_with_replacement(iterable(x, make_range = True), y))
+	),
+	'œị': attrdict(
+		arity = 2,
+		ldepth = 1,
+		call = at_index_ndim
 	),
 	'œl': attrdict(
 		arity = 2,
