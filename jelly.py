@@ -2693,7 +2693,7 @@ hypers = {
 	),
 	'{': lambda link, none = None: attrdict(
 		arity = 2,
-		call = lambda x, y: monadic_link(link, x)
+		call = lambda x, y: dyadic_link(link, (y, y)) if link.arity == 2 else monadic_link(link, x)
 	),
 	'}': lambda link, none = None: attrdict(
 		arity = 2,
