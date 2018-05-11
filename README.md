@@ -7,6 +7,7 @@ Jelly is a golfing language inspired by J.
 * [Tutorial]
 * [Code page]
 * [Atoms]
+* [Aliases]
 * [Quicks]
 * [Syntax]
 
@@ -62,6 +63,7 @@ Jelly's main input method is via command line arguments, although reading input 
 [Code page]: https://github.com/DennisMitchell/jellylanguage/wiki/Code-page
 [Jelly interpreter]: https://tio.run/#jelly
 [Quicks]: https://github.com/DennisMitchell/jellylanguage/wiki/Quicks
+[Aliases]: https://github.com/DennisMitchell/jellylanguage/wiki/Aliases
 [Syntax]: https://github.com/DennisMitchell/jellylanguage/wiki/Syntax
 [Try It Online]: https://tryitonline.net
 [Tutorial]: https://github.com/DennisMitchell/jellylanguage/wiki/Tutorial
