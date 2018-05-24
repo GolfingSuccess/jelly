@@ -2971,6 +2971,13 @@ quicks = {
 			call = lambda x, y = None: extremes(max, links[0], (x, y))
 		)]
 	),
+	'ÐG': attrdict(
+		condition = lambda links: links,
+		quicklink = lambda links, outmost_links, index: [attrdict(
+			arity = max(links[0].arity, 1),
+			call = lambda x, y = None: atoms['ṁ'].call(x, group_equal(variadic_link(link, (x, y))))
+		)]
+	)
 }
 
 hypers = {
@@ -3021,10 +3028,6 @@ hypers = {
 	'ŀ': lambda index, links: attrdict(
 		arity = 2,
 		call = lambda x, y: dyadic_chain(links[(variadic_link(index, (x, y)) - 1) % (len(links) - 1)], (x, y))
-	),
-	'Ðg': lambda link, none = None: attrdict(
-		arity = max(1, link.arity)
-		call = lambda x, y = None: atoms['ṁ'],call(x, group_equal(variadic_link(link, (x, y))))
 	)
 }
 
