@@ -2936,6 +2936,13 @@ quicks = {
 			call = lambda x, y = None: list(itertools.filterfalse(lambda t: variadic_link(links[0], (t, y)), iterable(x, make_range = True)))
 		)]
 	),
+	'Ðg': attrdict(
+		condition = lambda links: links,
+		quicklink = lambda links, outmost_links, index: [attrdict(
+			arity = max(links[0].arity, 1),
+			call = lambda x, y = None: atoms['ṁ'].call(x, group_equal(variadic_link(links[0], (x, y))))
+		)]
+	),
 	'ÐL': attrdict(
 		condition = lambda links: links,
 		quicklink = lambda links, outmost_links, index: [attrdict(
@@ -2969,13 +2976,6 @@ quicks = {
 		quicklink = lambda links, outmost_links, index: [attrdict(
 			arity = links[0].arity,
 			call = lambda x, y = None: extremes(max, links[0], (x, y))
-		)]
-	),
-	'ÐG': attrdict(
-		condition = lambda links: links,
-		quicklink = lambda links, outmost_links, index: [attrdict(
-			arity = max(links[0].arity, 1),
-			call = lambda x, y = None: atoms['ṁ'].call(x, group_equal(variadic_link(link, (x, y))))
 		)]
 	)
 }
