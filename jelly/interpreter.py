@@ -3021,6 +3021,10 @@ hypers = {
 	'ŀ': lambda index, links: attrdict(
 		arity = 2,
 		call = lambda x, y: dyadic_chain(links[(variadic_link(index, (x, y)) - 1) % (len(links) - 1)], (x, y))
+	),
+	'Ðg': lambda link, none = None: attrdict(
+		arity = max(1, link.arity)
+		call = lambda x, y = None: atoms['ṁ'],call(x, group_equal(variadic_link(link, (x, y))))
 	)
 }
 
